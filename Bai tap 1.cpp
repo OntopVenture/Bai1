@@ -311,37 +311,189 @@ void baitap26(){
 	min = 0;
 	max = 0;
 	
-		
 	if(a>b){
 		if(b>c){
 			min = c;
 			max = a;
-				} else if(b<c){
+			}else if(b<c){
 					if(a>c){
-					max = a;
-					min = b;
-						} else {
-						max = c;
 						min = b;
+						max = a;
+					}else{
+						min = b;
+						max = c;
 						}
-				}
-			} else if (a<b){
-				if(b<c){
-					max = c;
-					min = a;
-					} else if(b>c){
-						if(a<c){
-							min = a;
-							max = b;
-						}
+				}else {
+					min = c;
+					max = a;
+			
+			}
+	} else if (a<b){
+			if(b<c){
+				min = a;
+				max = c;
+					}else{
+						min = a;
+						max = c;
 					}
-				}
-
+			}else{
+				if(b<c){
+					min = a;
+					max = c;
+				}else if (b>c){
+					min = c;
+					max = b;
+		} else{
+			min = a;
+			max = c;
+		}
+		
+	}
+		
 	printf("%d %d",max,min);
+}
+void baitap27(){
+	int a,b,c;
+	printf("Input a,b,c la do dai 3 canh tam gia: \n");
+	scanf("%d,%d,%d",&a, &b, &c);
+	if(a>0&&b>0&&c>0&&a+b>c&&a+c>b&&b+c>a){
+		printf("YES");
+	}else{
+		printf("NO");
+	}
+}
+void baitap28(){
+		int a,b,c;
+	printf("Input a,b,c la do dai 3 canh tam gia: \n");
+	scanf("%d,%d,%d",&a, &b, &c);
+	if(a>0&&b>0&&c>0&&a+b>c&&a+c>b&&b+c>a){
+		if(a==b&&a!=c){
+			if(c*c==a*a+b*b){
+				printf("4");
+			}else{
+				printf("2");
+			}
+		}
+		if(b==c&&a!=c){
+			if(a*a == c*c+b*b){
+				printf("4");
+			}else{
+				printf("2");
+			}
+		}
+		if(a==b&&b==c){
+			printf("1");
+		}
+		if(a!=b&&b!=c&&c!=a){
+		
+				if(a*a == b*b + c*c|| b*b == a*a + c*c || c*c == a*a + b*b){
+					printf("3");
+				}
+			else {
+				printf("5");
+			}
+		
+	}
+	}else{
+		printf("INVALID");
+	}
+}
+void baitap29(){
+	int days;
+	int y,w,d;
+	printf("Nhap so ngay: \n");
+	scanf("%d",&days);
+	y = days/365;
+	w = (days - 365*y)/7;
+	d = days - 365*y - 7*w;
+	printf("%d %d %d", y, w,d);
+}
+int checkPrime(int n){
+	int flag = -1;
+	for(int i = 2; i<n/2; i++){
+		if(n%i==0){
+			flag = 1;
+		}
+	}
+	return flag;
+}
+
+void baitap30(){
+	
+	int a,b,c;
+	int delta;
+	float x1, x2, x3;
+	printf("Input a,b,c \n");
+	scanf("%d,%d,%d",&a,&b,&c);
+	delta = b*b-4*a*c;
+	if(a==0&&b==0&&c==0){
+		printf("PT vo so nghiem");
+	}else{
+		if(delta>0){
+			x1= (-b-sqrt(delta))/(2*(float)a);
+			x2= (-b+sqrt(delta))/(2*(float)a);
+			printf("Phuong trinh co 2 nghiem: %2f %2f",x1,x2);
+		}
+		else if(delta==0){
+			x3 = -b/(2*(float)a);
+			printf("Phuong trinh co nghiem kep: %3f",x3);
+		}
+		else{
+			printf("INF");
+		}
+		
+	}
+}
+void baitap31(){
+	int x;
+	int i=2;
+	printf("Input x: \n");
+	scanf("%d",&x);
+
+	for(int j=x-2; j>2; j--){
+		if(checkPrime(i)==1&&checkPrime(j)==1){
+			printf("%d %d",i,j);
+			break;
+		}
+		i++;
+	}
+		
+}
+void baitap32(){
+	int x;
+	printf("Input x: \n");
+	scanf("%d",&x);
+	int n,m;
+	if(abs(x)<=5){
+		printf("1");
+	}else{
+		n = abs(x)%5;
+		m=abs(x)-5*n;
+		if(m>0){
+			printf("%d",n+1);
+			
+		}else{
+			printf("%d",n);
+		}
+	}
+}
+void baitap33(){
+	int a,b;
+	int dhipster, dnormal;
+	printf("Input a,b: \n");
+	scanf("%d,%d",&a,&b);
+	if(a>b){
+		dhipster = b;
+		dnormal = (a-b)/2;
+	} else{
+		dhipster = a;
+		dnormal = (b-a)/2;
+	}
+	printf("%d %d",dhipster, dnormal);
 }
 
 int main(){
-	baitap26();
+	baitap33();
 	return 0;
 	
 }
